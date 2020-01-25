@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "172973503546",
+    "firebase_url": "https://aptgenie-ced1d.firebaseio.com",
+    "project_id": "aptgenie-ced1d",
+    "storage_bucket": "aptgenie-ced1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172973503546:android:3151d83d067f404334b103",
+        "android_client_info": {
+          "package_name": "com.companyname.aptgenie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172973503546-oo34ur907llho4a32q0gv0k8d08n07nd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxs_JHi0rjUjxl1MPYvbubiKkK46JNV5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172973503546-oo34ur907llho4a32q0gv0k8d08n07nd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

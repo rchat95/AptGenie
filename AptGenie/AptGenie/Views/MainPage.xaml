@@ -8,9 +8,13 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <Label Text="Welcome to Apartment Genie" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Label Text="Sign In"/>
+        <Entry Placeholder="Email ID" Text="{Binding emailID}"/>
+        <Label Text="Password"/>
+        <Entry Placeholder="Password" IsPassword="True" Text="{Binding password}"/>
         <Button Text="Test" Command="{Binding TestCommand}"/>
     </StackLayout>
 
