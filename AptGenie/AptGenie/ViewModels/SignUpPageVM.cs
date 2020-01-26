@@ -4,18 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
 namespace AptGenie.ViewModels
 {
-    public class SignInPageVM : INotifyPropertyChanged
+    public class SignUpPageVM : INotifyPropertyChanged
     {
-       
-        public SignInPageVM()
+        public SignUpPageVM()
         {
-            SignInCommand = new Command(() =>
+            SignUpCommand = new Command(() =>
             {
                 try
                 {
@@ -34,27 +31,37 @@ namespace AptGenie.ViewModels
                     {
                         Application.Current.MainPage.DisplayAlert("Alert", "Password cannot be blank", "OK");
                         return;
-                    } 
+                    }
+                    if (phonenum.Length != 10 && phonenum.Length != 0)
+                    {
+                        Application.Current.MainPage.DisplayAlert("Alert", "Invalid phone number", "OK");
+                        return;
+                    }
+
                     #endregion
-                    DependencyService.Get<IFirebaseAuthenticator>().LoginWithEmailPassword(emailID, password);
-                    
+                    var token = DependencyService.Get<IFirebaseAuthenticator>().CreateWithEmailPassword(emailID, password);
+
+                    if (token != null)
+                    {
+                        Application.Current.MainPage.Navigation.PushAsync(new HomePage());
+                    }
+
                 }
                 catch (Exception ex)
                 {
-                    
-                }         
+
+                }
 
             });
 
-            GoToSignUpPage = new Command(() =>
-            {
-                Application.Current.MainPage.Navigation.PushAsync(new SignUpPage());
-            });
         }
-        public Command SignInCommand { get; }
-        public Command GoToSignUpPage { get; }
+
+        public Command SignUpCommand { get; }
+
+        public string userName { get; set; }
         public string emailID { get; set; }
         public string password { get; set; }
+        public string phonenum { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

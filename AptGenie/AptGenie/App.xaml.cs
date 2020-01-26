@@ -1,16 +1,18 @@
-﻿using System;
+﻿using AptGenie.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace AptGenie
 {
     public partial class App : Application
-    {
+    {        
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new WelcomePage());
+
         }
 
         protected override void OnStart()

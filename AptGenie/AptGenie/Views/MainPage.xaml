@@ -3,19 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="AptGenie.MainPage">
-
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Apartment Genie" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-        <Label Text="Sign In"/>
-        <Entry Placeholder="Email ID" Text="{Binding emailID}"/>
-        <Label Text="Password"/>
-        <Entry Placeholder="Password" IsPassword="True" Text="{Binding password}"/>
-        <Button Text="Test" Command="{Binding TestCommand}"/>
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             mc:Ignorable="d"             
+             x:Class="AptGenie.MainPage"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False"
+             Title="Sign In"
+             >
+    <StackLayout VerticalOptions="End">
+        <StackLayout Padding="40" VerticalOptions="Center">
+            <forms:AnimationView x:Name="animationView"
+                                 Animation="keys.json"
+                                 Loop="True"
+                                 HeightRequest="100" WidthRequest="100"
+                                 AutoPlay="True"
+                             Rotation="180"
+                                />
+            <Label FontSize="Medium" TextColor="Black" Text="Welcome to Apartment Genie!" HorizontalTextAlignment="Center"/>
+            <Entry Placeholder="Email" Text="{Binding emailID}"  WidthRequest="200" Margin="0,50,0,0"/>
+            <Entry Placeholder="Password" Text="{Binding password}" WidthRequest="200" IsPassword="True"/>
+            <Button Text="Sign In" BackgroundColor="#006ebd" TextColor="White" Command="{Binding SignInCommand}"  FontSize="18"/>
+            <Button Text="Not a member? Sign up here" TextColor="Blue" BorderWidth="0" BackgroundColor="Transparent" Command="{Binding GoToSignUpPage}"/>
+            
+        </StackLayout>
+        <StackLayout VerticalOptions="End">
+            <Image Source="skyline.png" Aspect="AspectFit"/>
+        </StackLayout>
     </StackLayout>
+
 
 </ContentPage>

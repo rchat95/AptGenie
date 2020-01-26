@@ -8,5 +8,6 @@ namespace AptGenie.Services
     public interface IFirebaseAuthenticator
     {
         Task<string> LoginWithEmailPassword(string email, string password);
+        Task<string> CreateWithEmailPassword(string email, string password);
     }
 }
