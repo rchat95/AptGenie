@@ -43,11 +43,15 @@ namespace AptGenie.ViewModels
 
                     //bool res = await Application.Current.MainPage.DisplayAlert("Geolocation", "Latitude = " + location.Latitude + " and " + "Longitude = " + location.Longitude, "Test AddApt API", "Cancel");
 
-                    await PostForm(location.Latitude, location.Longitude);
+                    var res = await PostForm(location.Latitude, location.Longitude);
+                    if (res.Equals("OK"))
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Success","Apartment added successfully","OK");
+                    }
                 }
                 catch (Exception ex)
                 {
-
+                    await Application.Current.MainPage.DisplayAlert("Alert", "Error", "OK");
                 }
             });
 
@@ -59,13 +63,14 @@ namespace AptGenie.ViewModels
                     FileData fileData = await CrossFilePicker.Current.PickFile();
                     if (fileData == null)
                         return; // user canceled file picking
+                   
                     fileNameLbl = fileData.FileName;
-                    string fileName = fileData.FileName;
+                    
                     imgArr = fileData.DataArray;
                 }
                 catch (Exception ex)
                 {
-
+                    await Application.Current.MainPage.DisplayAlert("Alert", "Error", "OK");
                 }
             });
         }
@@ -104,7 +109,7 @@ namespace AptGenie.ViewModels
         public string aptName { get; set; }
         public string address { get; set; }
         public double price { get; set; }
-        public Date avlbltill { get; set; }
+        public DateTime avlbltill { get; set; }
 
         public string fileNameLbl { get; set; }
 
